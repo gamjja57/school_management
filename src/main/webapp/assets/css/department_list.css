@@ -1,5 +1,7 @@
 /* department_list.css */
 main {background-color: #f7f7f7;}
+
+/* 메인 css */
 main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px;border-bottom: 1px solid #ddd;}
 
 #add_department {
@@ -21,12 +23,14 @@ main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px;border-bot
 
 
 
-
-#reset_btn {border: 0; background-color: rgb(103,103,124); color: #fff; width: 80px; height: 35px;
+/* 초기화 버튼 */
+/* #reset_btn {border: 0; background-color: rgb(103,103,124); color: #fff; width: 80px; height: 35px;
     border-radius: 99px; cursor: pointer;
 }
-#reset_btn:hover{background-color: rgb(18,18,68);}
+#reset_btn:hover{background-color: rgb(18,18,68);} */
 
+
+/* 테이블 css */
 .table_area table {width: 100%; margin-top: 30px; border-collapse: separate;
         border-spacing: 0 15px;}
 .table_area td {text-align: center;}
@@ -55,6 +59,9 @@ font-size: 20px; color: #434343; cursor: pointer;}
 .pagers a.current {color: #000; text-decoration: underline; font-weight: 700;}
 
 
+
+
+/* 팝업 css */
 
 #nodata{
     font-size:  24px; font-weight: 700; color: #999;
@@ -101,5 +108,10 @@ border-radius: 999px; display: inline-block;}
 }
 .btn_area #add_dep {background-color: #999;}
 .btn_area #add_dep:hover {background-color: #333;}
+
+.btn_area #modify_dep {background-color: #999;}
+.btn_area #modify_dep:hover {background-color: #333;}
+
+
 .btn_area #cancel_dep {background-color: rgb(255, 194, 194);}
 .btn_area #cancel_dep:hover {background-color: rgb(255, 83, 83);}
