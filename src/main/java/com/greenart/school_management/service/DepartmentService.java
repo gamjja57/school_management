@@ -125,4 +125,18 @@ public class DepartmentService {
 
         return resultMap;
     }
+
+
+    public Map<String, Object> getDepartmentByKeyword(String keyword) {
+        Map<String, Object> resultMap= new LinkedHashMap<String, Object>();
+
+        if(keyword == null) keyword = "%%";
+        keyword = "%"+keyword+"%";
+
+        List<DepartmentVO> list = mapper.getDepartmentByKeyword(keyword);
+
+        resultMap.put("status", true);
+        resultMap.put("list", list);
+        return resultMap;
+    }
 }

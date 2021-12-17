@@ -96,7 +96,7 @@ $(function() {
 
         /* 수정 버튼 기능 넣어주기 */
         $("#modify_dep").click(function(){
-            alert(modify_btn_seq)
+            // alert(modify_btn_seq)
             if(confirm("수정하시겠습니까?")==false) return;
 
             let dep_name = $("#dep_name").val();
