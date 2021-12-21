@@ -114,6 +114,7 @@ $(function() {
 
     $("#add_department").click(function(){
         $(".popup_wrap").css("display", "block");
+        $("#add_dep").css("display", "inline-block");
         $("#modify_dep").css("display", "none");
         $("#cancel_dep").css("display", "inline-block");
         $(".popup .top_area h2").html("교직원 추가");
@@ -142,5 +143,78 @@ $(function() {
         let keyword = $("#keyword").val();
 
         location.href = "/teacher?type="+type+"&keyword="+keyword;
+    })
+
+
+    $(".delete_btn").click(function(){
+        if(!confirm("삭제하시겠습니까?")) return
+        // if(confirm("삭제하시겠습니까?")==false) return    - 같은 의미
+        let seq = $(this).attr("data-seq");
+        // alert(seq);
+
+        $.ajax({
+            url:"/teacher/delete?seq="+seq,
+            type:"delete",
+            success: function(r) {
+                alert(r.message)
+                if(r.status) // 삭제 성공시 (r.status 의 값이 true 일 때)
+                    location.reload();   // 페이지 새로고침
+            }
+        })
+    })
+
+
+
+    let modify_seq = 0;
+    $(".modify_btn").click(function(){
+        let seq = $(this).attr("data-seq");
+        modify_seq = seq;
+        $.ajax({
+            url:"/teacher/get?seq="+seq,
+            type:"get",
+            success:function(r){
+                $(".popup_wrap").css("display", "block");
+                $("#add_dep").css("display", "none");
+                $("#modify_dep").css("display", "inline-block");
+                $("#cancel_dep").css("display", "inline-block");
+                $(".popup .top_area h2").html("교직원 수정");
+                $(".popup .top_area p").html("수정할 정보를 입력하세요");
+
+                $("#teacher_dep_name").attr("data-dep-seq", r.ti_di_seq);
+                $("#teacher_dep_name").val(r.department_name);
+                $("#teacher_name").val(r.ti_name);
+                $("#teacher_number").val(r.ti_number);
+                $("#teacher_pwd").val("**********").prop("disabled", true);
+                $("#teacher_pwd_confirm").val("**********").prop("disabled", true);
+                $("#teacher_birth").val(r.ti_birth);
+                $("#teacher_phone").val(r.ti_phone_num);
+                $("#teacher_email").val(r.ti_email);
+                $("#teacher_status").val(r.ti_status).prop("selected", true);
+            }
+        })
+    })
+    $("#modify_dep").click(function(){
+        if(confirm("수정하시겠습니까?") == false) return;
+        let data = {
+            ti_seq:modify_seq,
+            ti_di_seq : $("#teacher_dep_name").attr("data-dep-seq"),
+            ti_name : $("#teacher_name").val(),
+            ti_number : $("#teacher_number").val(),
+            ti_birth : $("#teacher_birth").val(),
+            ti_phone_num : $("#teacher_phone").val(),
+            ti_email : $("#teacher_email").val(),
+            ti_status : $("#teacher_status option:selected").val()
+        }
+        $.ajax({
+            url:"/teacher/modify",
+            type:"patch",
+            data:JSON.stringify(data),
+            contentType:"application/json",
+            success:function(r){
+                alert(r.message);
+                if(r.status)
+                    location.reload();
+            }
+        })
     })
 })

@@ -1,6 +1,8 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +22,6 @@ pageEncoding="UTF-8"%>
         <div class="content_area">
             <div class="menu_area">
                 <div class="search_box">
-
                     <select id="search_type">
                         <option value="dept">학과</option>
                         <option value="name"
@@ -81,13 +82,13 @@ pageEncoding="UTF-8"%>
                                                 <span style="background-color: rgb(243, 69, 69);">퇴임</span>
                                             </c:if>
                                         </td>
-                                        <td>${t.ti_status}</td>
-                                        <td>${t.ti_reg_dt}</td>
-                                        <td>${t.ti_mod_dt}</td>
-                                        
+                                        <!-- <td>${t.ti_status}</td> -->
+                                        <td><fmt:formatDate value="${t.ti_reg_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
+                                        <td><fmt:formatDate value="${t.ti_mod_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
+
                                         <td>
-                                            <button class="modify_btn" data-seq="${d.di_seq}"><i class="fas fa-pencil-alt"></i></button>
-                                            <button class="delete_btn" data-seq="${d.di_seq}"><i class="fas fa-minus-circle"></i></button>
+                                            <button class="modify_btn" data-seq="${t.ti_seq}"><i class="fas fa-pencil-alt"></i></button>
+                                            <button class="delete_btn" data-seq="${t.ti_seq}"><i class="fas fa-minus-circle"></i></button>
                                         </td>
                                     </tr>
                         </c:forEach>

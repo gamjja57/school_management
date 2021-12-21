@@ -24,6 +24,8 @@ public class DashboardService {
         teacherCntList.add(mapper.getTotalTeacherCnt());
         teacherCntList.add(mapper.getWorkTeacherCnt());
         teacherCntList.add(mapper.getDatOffTeacherCnt());
+        teacherCntList.add(mapper.getDatOff2TeacherCnt());
+        teacherCntList.add(mapper.getretireTeacherCnt());
     
         
         List<Integer> studentCntList = new ArrayList<Integer>();
@@ -44,6 +46,15 @@ public class DashboardService {
         map.put("student", studentCntList);
         map.put("subject", subjectCntList);
         return map;
+    }
+
+    public Map<String, Object> getUpdateDate()  {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+        
+        resultMap.put("department", mapper.getDepartmentUpdateDate());
+        resultMap.put("teacher", mapper.getTeacherUpdateDate());
+
+        return resultMap;
     }
 }
 

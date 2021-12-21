@@ -4,7 +4,7 @@ main > h1 {font-size: 36px; margin-bottom: 30px;}
 .content_area {font-size: 0; width: 1250px;}
 .content_area > div {
     display: inline-block; vertical-align: top;
-    width: 230px;height: 200px;padding: 30px; position: relative;
+    width: 230px;height: 250px;padding: 30px; position: relative;
     background-color: #fff;font-size: 16px; margin-left: 20px;
     border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }

@@ -20,7 +20,13 @@
             select count(*) from teacher_info where ti_status=1
         </select>
         <select id="getDatOffTeacherCnt" resultType="java.lang.Integer">
-            select count(*) from teacher_info where ti_status=0
+            select count(*) from teacher_info where ti_status=2
+        </select>
+        <select id="getDatOff2TeacherCnt" resultType="java.lang.Integer">
+            select count(*) from teacher_info where ti_status=3
+        </select>
+        <select id="getretireTeacherCnt" resultType="java.lang.Integer">
+            select count(*) from teacher_info where ti_status=4
         </select>
 
 
@@ -49,5 +55,14 @@
         </select>
         <select id="getFinishSubjectCnt" resultType="java.lang.Integer">
             select count(*) from course_subject_info where csi_status=0
+        </select>
+
+
+
+        <select id="getDepartmentUpdateDate" resultType="java.util.Date">
+            select deph_reg_dt from department_history order by deph_reg_dt desc limit 1
+        </select>
+        <select id="getTeacherUpdateDate" resultType="java.util.Date">
+            select tih_reg_dt from teacher_info_history order by tih_reg_dt desc limit 1
         </select>
     </mapper>

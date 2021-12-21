@@ -19,4 +19,9 @@ public class TeacherVO {
     private Integer ti_status;
 
     private String department_name;
+
+    public String makeHistoryStr() {
+        return ti_di_seq+"|"+ti_number+"|"+ti_name+"|"+ti_birth+"|"+
+        ti_phone_num+"|"+ti_email+"|"+ti_status;
+    }
 }
